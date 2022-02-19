@@ -1,0 +1,117 @@
+ static class Pair
+    {
+        int f;int s; //
+        Pair(){}
+        Pair(int f,int s){ this.f=f;this.s=s;}
+    }   
+static class Fast {
+        BufferedReader br;
+        StringTokenizer st;
+
+        public Fast() {
+            br = new BufferedReader(
+                    new InputStreamReader(System.in));
+        }
+
+        String next() {
+            while (st == null || !st.hasMoreElements()) {
+                try {
+                    st = new StringTokenizer(br.readLine());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            return st.nextToken();
+        }
+
+        int nextInt() {
+            return Integer.parseInt(next());
+        }
+
+        long nextLong() {
+            return Long.parseLong(next());
+        }
+
+        double nextDouble() {
+            return Double.parseDouble(next());
+        }
+
+        int[] readArray(int n) {
+            int a[] = new int[n];
+            for (int i = 0; i < n; i++)
+                a[i] = nextInt();
+            return a;
+        }
+
+        long[] readArray1(int n) {
+            long a[] = new long[n];
+            for (int i = 0; i < n; i++)
+                a[i] = nextLong();
+            return a;
+        }
+
+        String nextLine() {
+            String str = "";
+            try {
+                str = br.readLine().trim();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return str;
+        }
+    }
+
+    /*  static long noOfDivisor(long a)
+      {
+          long count=0;
+          long t=a;
+          for(long i=1;i<=(int)Math.sqrt(a);i++)
+          {
+              if(a%i==0)
+                  count+=2;
+          }
+          if(a==((long)Math.sqrt(a)*(long)Math.sqrt(a)))
+          {
+              count--;
+          }
+              return count;
+      }*/
+    static boolean isPrime(long a) {
+        for (long i = 2; i <= (long) Math.sqrt(a); i++) {
+            if (a % i == 0)
+                return false;
+        }
+        return true;
+    }
+
+    static void primeFact(int n) {
+        int temp = n;
+        HashMap<Integer, Integer> h = new HashMap<>();
+        for (int i = 2; i * i <= n; i++) {
+            if (temp % i == 0) {
+                int c = 0;
+                while (temp % i == 0) {
+                    c++;
+                    temp /= i;
+                }
+                h.put(i, c);
+            }
+        }
+        if (temp != 1)
+            h.put(temp, 1);
+
+    }
+
+    static void reverseArray(int a[]) {
+        int n = a.length;
+        for (int i = 0; i < n / 2; i++) {
+            a[i] = a[i] ^ a[n - i - 1];
+            a[n - i - 1] = a[i] ^ a[n - i - 1];
+            a[i] = a[i] ^ a[n - i - 1];
+
+        }
+    }
+
+    public static void main(String args[]) throws IOException {
+        Fast sc = new Fast();
+        PrintWriter out = new PrintWriter(System.out);
