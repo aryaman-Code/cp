@@ -1,0 +1,32 @@
+ static  int ncr(int n ,int r)
+    {
+        int res,i;
+        res=1;
+        for( i=1;i<=r;i++)
+        {
+            res=(res*(n-i+1))/i;
+        }
+        return res;
+    }
+  public long pow(long x, long n)
+    {
+        // Code here
+        long m=1000000007;
+        x=x%m;
+        if(x==0)
+            return 0;
+        long nn=n;
+       if(n<0)
+           nn=-nn;
+        long res=1;
+        while(nn>0)
+        {
+            if((nn&1)==1)
+                res=(res*x)%m;
+            x=(x*x)%m;
+            nn=nn/2;
+        }
+        if(n<0)
+            return (long)(1.0/res);
+        return res;
+    }
