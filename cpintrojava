@@ -111,7 +111,18 @@ static class Fast {
 
         }
     }
-
+    static void sort(int[] a) {
+        ArrayList<Integer> l=new ArrayList<>();
+        for (int i:a) l.add(i);
+        Collections.sort(l);
+        for (int i=0; i<a.length; i++) a[i]=l.get(i);
+    }
+     static void sort(long [] a) {
+        ArrayList<Long> l=new ArrayList<>();
+        for (long i:a) l.add(i);
+        Collections.sort(l);
+        for (int i=0; i<a.length; i++) a[i]=l.get(i);
+    }
     public static void main(String args[]) throws IOException {
         Fast sc = new Fast();
         PrintWriter out = new PrintWriter(System.out);
