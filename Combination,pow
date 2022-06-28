@@ -1,3 +1,25 @@
+ ///////////////Second thread cf////////
+ 
+ static long exp(long base, long exp) {
+		if (exp==0) return 1;
+		long half=exp(base, exp/2);
+		if (exp%2==0) return mul(half, half);
+		return mul(half, mul(half, base));
+	}
+	static long[] factorials=new long[2_000_001];
+	static long[] invFactorials=new long[2_000_001];
+	static void precompFacts() {
+		factorials[0]=invFactorials[0]=1;
+		for (int i=1; i<factorials.length; i++) factorials[i]=mul(factorials[i-1], i);
+		invFactorials[factorials.length-1]=exp(factorials[factorials.length-1], mod-2);
+		for (int i=invFactorials.length-2; i>=0; i--)
+			invFactorials[i]=mul(invFactorials[i+1], i+1);
+	}
+	
+	static long nCk(int n, int k) {
+		return mul(factorials[n], mul(invFactorials[k], invFactorials[n-k]));
+	}
+ 
  static  int ncr(int n ,int r)
     {
         int res,i;
