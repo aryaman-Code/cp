@@ -1,5 +1,9 @@
  ///////////////Second thread cf////////
  
+  static long mul(long a, long b) {
+        return (a*b)%mod;
+    }
+    static final int mod=1_000_000_007;
  static long exp(long base, long exp) {
 		if (exp==0) return 1;
 		long half=exp(base, exp/2);
