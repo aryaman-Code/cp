@@ -1,0 +1,30 @@
+static int[] sieveFirstPrimeFactor(int n){
+        int p[]=new int[n+1];
+        for(int i=0;i<=n;i++)
+        p[i]=i;
+
+        for(int i=2;i*i<=n;i++)
+        {
+            if(p[i]==i)
+            {
+                for (int j = i*i; j <= n; j += i) {
+                    if(p[j]==j)
+                    p[j] = i;
+                }
+            }
+        }
+        return p;
+    }
+
+// TC- o(sqrt(n))  pre-computation
+
+  TreeSet<Integer> primeFactors=new TreeSet<>();
+           while(d!=1)
+           {
+               if(!primeFactors.contains(p[d]))
+                   primeFactors.add(p[d]);
+               d=d/p[d];
+
+           }
+
+// TC- O(log(d))
